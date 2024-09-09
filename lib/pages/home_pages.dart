@@ -12,10 +12,10 @@ class _HomePagesState extends State<HomePages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.blue,
-          leading: const Icon(
+          backgroundColor: Colors.transparent,
+          leading: Icon(
             Icons.menu,
-            color: Colors.white,
+            color: Colors.grey[800],
           )),
     );
   }
