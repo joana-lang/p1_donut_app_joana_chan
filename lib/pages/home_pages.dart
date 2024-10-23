@@ -18,15 +18,30 @@ class HomePages extends StatefulWidget {
 class _HomePagesState extends State<HomePages> {
   List<Widget> myTabs = [
     //donut tab
-    const MyTab(iconPath: 'lib/icons/donut.png'),
+    const MyTab(
+      iconPath: 'lib/icons/donut.png',
+      label: "Donuts",
+    ),
     //burguer tab
-    const MyTab(iconPath: 'lib/icons/burger.png'),
+    const MyTab(
+      iconPath: 'lib/icons/burger.png',
+      label: "Burgers",
+    ),
     //smothie tab
-    const MyTab(iconPath: 'lib/icons/smoothie.png'),
-    //panqueue tab
-    const MyTab(iconPath: 'lib/icons/pancakes.png'),
+    const MyTab(
+      iconPath: 'lib/icons/smoothie.png',
+      label: "Smothie",
+    ),
+    //panqueque tab
+    const MyTab(
+      iconPath: 'lib/icons/pancakes.png',
+      label: "Pancakes",
+    ),
     //pizza tab
-    const MyTab(iconPath: 'lib/icons/pizza.png'),
+    const MyTab(
+      iconPath: 'lib/icons/pizza.png',
+      label: "Pizza",
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -70,13 +85,13 @@ class _HomePagesState extends State<HomePages> {
               TabBar(tabs: myTabs),
 
               //Tab  bar view
-              Expanded(
+              const Expanded(
                   child: TabBarView(children: [
                 donutTab(),
-                const burgerTab(),
-                const smoothieTab(),
-                const panCakeTab(),
-                const pizzaTab()
+                burgerTab(),
+                smoothieTab(),
+                panCakeTab(),
+                pizzaTab()
               ]))
               //Total de carrito
             ],
