@@ -1,36 +1,57 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:p1_donut_app_joana_chan/utils/donut_tile.dart';
+import '../utils/panCake_tile.dart';
+import '../utils/pancake_tile.dart';
 
-// ignore: camel_case_types
-class donutTab extends StatelessWidget {
-  final List donutsOnSale = const [
-    // [ donutFlavor, donutPrice, donutColor, imageName ]
-    ["Ice Cream", "36", Colors.blue, "lib/images/icecream_donut.png"],
-    ["Strawberry", "45", Colors.red, "lib/images/strawberry_donut.png"],
-    ["Grape Ape", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "95", Colors.brown, "lib/images/chocolate_donut.png"],
-    ["chip", "66", Colors.yellow, "lib/images/chocolate_donut.png"],
-    ["Caramel", "95", Colors.orange, "lib/images/icecream_donut.png"],
-    ["Mocha", "44", Colors.pink, "lib/images/strawberry_donut.png"],
-    ["Mocha", "75", Colors.blue, "lib/images/grape_donut.png"],
+class PancakeTab extends StatelessWidget {
+  final Function(double) onAdd;
+
+  // Lista de donas en venta
+  final List pancakeOnSale = [
+    ["Pancake Cajeta", "50", Colors.blue, "lib/images/p_cajeta.png"],
+    ["Pancake Chocolate", "45", Colors.red, "lib/images/p_chocolate.png"],
+    ["Pancake Crepas", "44", Colors.purple, "lib/images/p_crepas.png"],
+    ["Pancake Fresa", "55", Colors.brown, "lib/images/p_fresa.png"],
+    [
+      "Pancake Frutos Rojos",
+      "46",
+      Colors.green,
+      "lib/images/p_frutos_rojos.png"
+    ],
+    ["Pancake Glaseado", "35", Colors.yellow, "lib/images/p_glaseado.png"],
+    [
+      "Pancake Mantequilla",
+      "44",
+      Colors.purple,
+      "lib/images/p_mantequilla.png"
+    ],
+    ["Pancake Miel", "35", Colors.orange, "lib/images/p_miel.png"],
   ];
-  const donutTab({super.key});
+
+  PancakeTab({super.key, required this.onAdd});
 
   @override
   Widget build(BuildContext context) {
-    //Delegate sirve para organizar los widgets en la cuadricula (como organizar los elementos de un convivio por ejemplo)
     return GridView.builder(
-        itemCount: donutsOnSale.length,
-        padding: const EdgeInsets.all(12),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 1 / 1.65),
-        itemBuilder: (context, index) {
-          return DonutTile(
-            donutFlavor: donutsOnSale[index][0],
-            donutPrice: donutsOnSale[index][1],
-            donutColor: donutsOnSale[index][2],
-            imageName: donutsOnSale[index][3],
-          );
-        });
+      itemCount: pancakeOnSale.length,
+      padding: const EdgeInsets.all(12),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1 / 1.75,
+      ),
+      itemBuilder: (context, index) {
+        double price = double.parse(pancakeOnSale[index][1]);
+
+        return PancakeTile(
+          pancakeFlavor: pancakeOnSale[index][0],
+          pancakePrice: pancakeOnSale[index][1],
+          pancakeColor: pancakeOnSale[index][2],
+          pancakeName: pancakeOnSale[index][3],
+          onAdd: () => onAdd(price),
+        );
+      },
+    );
   }
 }
